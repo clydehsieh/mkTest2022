@@ -23,6 +23,17 @@
 		0D86F30D2643A18900C0F731 /* HomeworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86F30C2643A18900C0F731 /* HomeworkUITests.swift */; };
 		0D86F3342643A80F00C0F731 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86F3332643A80F00C0F731 /* APIManager.swift */; };
 		0DE77A7E2644F6E70068A3CE /* InsertTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE77A7D2644F6E70068A3CE /* InsertTransactionViewController.swift */; };
+		EC9FF145283657A6002452A0 /* NoteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF144283657A6002452A0 /* NoteItemTableViewCell.swift */; };
+		EC9FF148283657C7002452A0 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF147283657C7002452A0 /* TableView+Extension.swift */; };
+		EC9FF14B28365808002452A0 /* NoteItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF14A28365808002452A0 /* NoteItemType.swift */; };
+		EC9FF14D2836586E002452A0 /* NoteItemDetailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF14C2836586E002452A0 /* NoteItemDetailType.swift */; };
+		EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF14E283659D3002452A0 /* Date+Extension.swift */; };
+		EC9FF151283687F0002452A0 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF150283687F0002452A0 /* Array+Extension.swift */; };
+		EC9FF15328368966002452A0 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF15228368966002452A0 /* NoteItem.swift */; };
+		EC9FF1552836898B002452A0 /* NoteItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF1542836898B002452A0 /* NoteItemDetail.swift */; };
+		EC9FF1572836998E002452A0 /* InfoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF1562836998E002452A0 /* InfoTextView.swift */; };
+		EC9FF15928369A3F002452A0 /* NoteItemDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF15828369A3F002452A0 /* NoteItemDetailTableViewCell.swift */; };
+		EC9FF15B28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +69,17 @@
 		0D86F30E2643A18900C0F731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D86F3332643A80F00C0F731 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0DE77A7D2644F6E70068A3CE /* InsertTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewController.swift; sourceTree = "<group>"; };
+		EC9FF144283657A6002452A0 /* NoteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemTableViewCell.swift; sourceTree = "<group>"; };
+		EC9FF147283657C7002452A0 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
+		EC9FF14A28365808002452A0 /* NoteItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemType.swift; sourceTree = "<group>"; };
+		EC9FF14C2836586E002452A0 /* NoteItemDetailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemDetailType.swift; sourceTree = "<group>"; };
+		EC9FF14E283659D3002452A0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		EC9FF150283687F0002452A0 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		EC9FF15228368966002452A0 /* NoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
+		EC9FF1542836898B002452A0 /* NoteItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemDetail.swift; sourceTree = "<group>"; };
+		EC9FF1562836998E002452A0 /* InfoTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTextView.swift; sourceTree = "<group>"; };
+		EC9FF15828369A3F002452A0 /* NoteItemDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemDetailTableViewCell.swift; sourceTree = "<group>"; };
+		EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemDetailTableViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +147,11 @@
 			children = (
 				0D86F2EA2643A18700C0F731 /* AppDelegate.swift */,
 				0D86F2EC2643A18700C0F731 /* SceneDelegate.swift */,
+				EC9FF146283657AC002452A0 /* Utility */,
 				0D86F3322643A69F00C0F731 /* Manager */,
 				0D86F32A2643A62000C0F731 /* Model */,
 				0DE77A7C2644F6BA0068A3CE /* ViewController */,
+				EC9FF1432836578D002452A0 /* View */,
 				0D86F2F32643A18800C0F731 /* Assets.xcassets */,
 				0D86F2F52643A18800C0F731 /* LaunchScreen.storyboard */,
 				0D86F2F82643A18800C0F731 /* Info.plist */,
@@ -164,6 +188,7 @@
 		0D86F32A2643A62000C0F731 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC9FF149283657F9002452A0 /* NoteItemType */,
 				0DE77AA82644FDC50068A3CE /* Response */,
 				0DE77AA72644FDBD0068A3CE /* Request */,
 			);
@@ -207,6 +232,38 @@
 			children = (
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		EC9FF1432836578D002452A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC9FF144283657A6002452A0 /* NoteItemTableViewCell.swift */,
+				EC9FF15828369A3F002452A0 /* NoteItemDetailTableViewCell.swift */,
+				EC9FF1562836998E002452A0 /* InfoTextView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC9FF146283657AC002452A0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EC9FF147283657C7002452A0 /* TableView+Extension.swift */,
+				EC9FF14E283659D3002452A0 /* Date+Extension.swift */,
+				EC9FF150283687F0002452A0 /* Array+Extension.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		EC9FF149283657F9002452A0 /* NoteItemType */ = {
+			isa = PBXGroup;
+			children = (
+				EC9FF14A28365808002452A0 /* NoteItemType.swift */,
+				EC9FF15228368966002452A0 /* NoteItem.swift */,
+				EC9FF14C2836586E002452A0 /* NoteItemDetailType.swift */,
+				EC9FF1542836898B002452A0 /* NoteItemDetail.swift */,
+				EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */,
+			);
+			path = NoteItemType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,8 +411,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9FF15928369A3F002452A0 /* NoteItemDetailTableViewCell.swift in Sources */,
+				EC9FF14D2836586E002452A0 /* NoteItemDetailType.swift in Sources */,
 				0D86F3342643A80F00C0F731 /* APIManager.swift in Sources */,
 				0D86F2EF2643A18700C0F731 /* TransactionListViewController.swift in Sources */,
+				EC9FF151283687F0002452A0 /* Array+Extension.swift in Sources */,
+				EC9FF145283657A6002452A0 /* NoteItemTableViewCell.swift in Sources */,
+				EC9FF1572836998E002452A0 /* InfoTextView.swift in Sources */,
+				EC9FF148283657C7002452A0 /* TableView+Extension.swift in Sources */,
+				EC9FF1552836898B002452A0 /* NoteItemDetail.swift in Sources */,
+				EC9FF15328368966002452A0 /* NoteItem.swift in Sources */,
+				EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */,
+				EC9FF14B28365808002452A0 /* NoteItemType.swift in Sources */,
+				EC9FF15B28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift in Sources */,
 				0D86F2EB2643A18700C0F731 /* AppDelegate.swift in Sources */,
 				0D86F2ED2643A18700C0F731 /* SceneDelegate.swift in Sources */,
 				0DE77A7E2644F6E70068A3CE /* InsertTransactionViewController.swift in Sources */,
