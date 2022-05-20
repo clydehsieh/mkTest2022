@@ -34,12 +34,25 @@ class TransactionListViewController: UIViewController {
         return btn
     }()
     
+    
+    //MARK: - DI
+    let viewModel: TransactionListViewModel
+    
     //MARK: - param
     let totalCost: BehaviorRelay<Int> = .init(value: 0)
-    let datasource: BehaviorRelay<[NoteItemType]> = .init(value: [])
+    let datasource: BehaviorRelay<[NoteItem]> = .init(value: [])
     var disposbag = DisposeBag()
     
     //MARK: - lifecycle
+    init(viewModel: TransactionListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -52,7 +65,7 @@ class TransactionListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        datasource.accept(mockData())
+        viewModel.fetchList()
     }
 }
 
@@ -86,7 +99,6 @@ extension TransactionListViewController {
     }
     
     private func configureTableView() {
-//        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(cellClass: NoteItemTableViewCell.self)
@@ -105,6 +117,12 @@ extension TransactionListViewController {
         addNoteButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.presentInsertTransactionViewController()
+            })
+            .disposed(by: disposbag)
+        
+        viewModel.reloadListevent
+            .subscribe(onNext: { [weak self] list in
+                self?.datasource.accept(list)
             })
             .disposed(by: disposbag)
     }
@@ -141,7 +159,7 @@ extension TransactionListViewController: UITableViewDelegate {
 }
 
 extension TransactionListViewController {
-    func mockData() -> [NoteItemType] {
+    func mockData() -> [NoteItem] {
         [NoteItem.mock(), NoteItem.mock(), NoteItem.mock(), NoteItem.mock(), NoteItem.mock()]
     }
 }

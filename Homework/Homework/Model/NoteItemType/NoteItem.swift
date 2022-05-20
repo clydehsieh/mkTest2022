@@ -7,20 +7,24 @@
 
 import UIKit
 
-struct NoteItem: NoteItemType {
+struct NoteItem: Decodable {
     var time: Date
     var title: String
     var description: String
-    var detailInfos: [NoteItemDetailType]
+    var details: [NoteItemDetail]?
     
 }
 
 extension NoteItem {
+    var displayDescription: String {
+        "\(time.yymmdd) \(title) \(description)"
+    }
+    
     static func mock() -> NoteItem {
         
         let count = (1...5).randomElement()!
         
-        var infos:  [NoteItemDetailType] = []
+        var infos:  [NoteItemDetail] = []
         while infos.count < count {
             infos.append(NoteItemDetail.mock())
         }
@@ -28,7 +32,7 @@ extension NoteItem {
         return NoteItem.init(time: Date(),
                              title: self.titleArray().randomElement()!,
                              description: self.desArray().randomElement()!,
-                             detailInfos: infos )
+                             details: infos )
     }
     
     static func titleArray() -> [String] {

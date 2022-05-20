@@ -7,14 +7,18 @@
 
 import UIKit
 
-struct NoteItemDetail: NoteItemDetailType {
+struct NoteItemDetail: Decodable {
     var name: String
     var price: Int
     var quantity: Int
 }
 
 extension NoteItemDetail {
-    static func mock() -> NoteItemDetailType {
+    var displayDescription: String {
+        "- \(name) \(price) x \(quantity)"
+    }
+    
+    static func mock() -> NoteItemDetail {
         NoteItemDetail.init(name: self.nameArray().randomElement()!,
                             price: (10...100).randomElement()!,
                             quantity: (1...10).randomElement()!)

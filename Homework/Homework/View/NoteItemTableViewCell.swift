@@ -66,14 +66,14 @@ extension NoteItemTableViewCell {
     }
 }
 extension NoteItemTableViewCell {
-    func configure(with item: NoteItemType) {
+    func configure(with item: NoteItem) {
         titleLabel.text = item.displayDescription
         
         for view in detailStackView.arrangedSubviews {
             view.removeFromSuperview()
         }
         
-        for detail in item.detailInfos {
+        for detail in (item.details ?? []) {
             let lb = createDetailLabel()
             lb.text = detail.displayDescription
             detailStackView.addArrangedSubview(lb)
