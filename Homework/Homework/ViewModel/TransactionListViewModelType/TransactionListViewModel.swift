@@ -56,11 +56,11 @@ extension TransactionListViewModel {
                 }
                 
                 debugPrint("fetch items \(list.count) from server")
-                weakSelf?.reloadListevent.accept(list)
                 weakSelf?.saveToLocalDB(items: list)
                 weakSelf?.sumAndUpdateTotalCost(of: list)
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
+                weakSelf?.loadFromLocalDB()
                 debugPrint("\(error.localizedDescription)")
             })
             .disposed(by: disposbag)
@@ -68,7 +68,6 @@ extension TransactionListViewModel {
     
     func saveToLocalDB(items: [NoteItem]) {
         weak var weakSelf = self
-        
         DBManager.shared.insert(items: items)
             .subscribe(onNext: {
                 debugPrint("save to local success")
@@ -85,7 +84,7 @@ extension TransactionListViewModel {
         weak var weakSelf = self
         DBManager.shared.loadItems()
             .subscribe(onNext: { list in
-//                weakSelf?.reloadListevent.accept(list)
+                weakSelf?.reloadListevent.accept(list)
                 debugPrint("reload item \(list.count) from local")
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
