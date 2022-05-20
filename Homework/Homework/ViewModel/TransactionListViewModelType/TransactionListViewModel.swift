@@ -16,6 +16,7 @@ final class TransactionListViewModel: TransactionListViewModelType {
     //output
     var reloadListevent = PublishRelay<[NoteItem]>()
     var errorEvent = PublishRelay<Error>()
+    var reloadTotalCost = PublishRelay<Int>()
     
     //MARK: - DI
     let apiManager: APIManager
@@ -32,6 +33,17 @@ final class TransactionListViewModel: TransactionListViewModelType {
     private func setupBinding() {
    
     }
+    
+    private func sumAndUpdateTotalCost(of lists: [NoteItem]) {
+        var cost = 0
+        for item in lists {
+            for detail in item.details ?? [] {
+                cost += detail.price * detail.quantity
+            }
+        }
+        
+        reloadTotalCost.accept(cost)
+    }
 }
 
 extension TransactionListViewModel {
@@ -46,6 +58,7 @@ extension TransactionListViewModel {
                 debugPrint("fetch items \(list.count) from server")
                 weakSelf?.reloadListevent.accept(list)
                 weakSelf?.saveToLocalDB(items: list)
+                weakSelf?.sumAndUpdateTotalCost(of: list)
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
                 debugPrint("\(error.localizedDescription)")

@@ -17,7 +17,7 @@ class TransactionListViewController: UIViewController {
         let lb = UILabel()
         lb.textColor = .black
         lb.font = .systemFont(ofSize: 14, weight: .bold)
-        lb.text = "總花費 $10000"
+        lb.text = "總花費 $0"
         return lb
     }()
     
@@ -122,6 +122,12 @@ extension TransactionListViewController {
         viewModel.reloadListevent
             .subscribe(onNext: { [weak self] list in
                 self?.datasource.accept(list)
+            })
+            .disposed(by: disposbag)
+        
+        viewModel.reloadTotalCost
+            .subscribe(onNext: { [weak self] totalCost in
+                self?.sumCostLabel.text = "總花費 \(totalCost.toCurrencyString ?? "$0")"
             })
             .disposed(by: disposbag)
     }

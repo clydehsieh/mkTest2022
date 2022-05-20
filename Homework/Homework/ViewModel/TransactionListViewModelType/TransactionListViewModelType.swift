@@ -16,4 +16,5 @@ protocol TransactionListViewModelType {
     //output
     var reloadListevent: PublishRelay<[NoteItem]> { get }
     var errorEvent: PublishRelay<Error> { get }
+    var reloadTotalCost: PublishRelay<Int> { get }
 }
