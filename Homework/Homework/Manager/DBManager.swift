@@ -104,22 +104,26 @@ extension DBManager {
                 observer.onError(DBManagerError.databaseNotExist)
                 return Disposables.create { }
             }
-            
-            var query = ""
-            
-            for item in items {
-                query += "insert or replace into \(table_name) (\(field_id), \(field_time), \(field_title), \(field_description)) values ('\(item.id)', \(Int(item.time.timeIntervalSince1970)), '\(item.title)', '\(item.description)');"
-                
-            }
-            
-            if !database.executeStatements(query) {
-                print("Failed to insert initial data into the database.")
-                print(database.lastError(), database.lastErrorMessage())
-                observer.onError(database.lastError())
-            } else {
+
+            do {
+                for item in items {
+                    try database.executeUpdate("insert or replace into \(table_name) (\(field_id), \(field_time), \(field_title), \(field_description)) values (?,?,?,?)", values: [item.id, Int(item.time.timeIntervalSince1970), item.title, item.description])
+                }
                 observer.onNext(())
                 observer.onCompleted()
+            } catch {
+                print(database.lastError(), database.lastErrorMessage())
+                observer.onError(database.lastError())
             }
+            
+//            if !database.executeStatements(query) {
+//                print("Failed to insert initial data into the database.")
+//                print(database.lastError(), database.lastErrorMessage())
+//                observer.onError(database.lastError())
+//            } else {
+//                observer.onNext(())
+//                observer.onCompleted()
+//            }
             
             database.close()
             return Disposables.create { }
