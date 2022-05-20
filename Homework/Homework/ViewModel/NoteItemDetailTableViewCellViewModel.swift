@@ -18,3 +18,9 @@ struct NoteItemDetailTableViewCellViewModel {
     var price = BehaviorRelay<Int>(value: 0)
     var quantity = BehaviorRelay<Int>(value: 0)
 }
+
+extension NoteItemDetailTableViewCellViewModel {
+    func mappingNoteItemDetailData() -> NoteItemDetail {
+        NoteItemDetail.init(name: name.value, price: price.value, quantity: quantity.value)
+    }
+}

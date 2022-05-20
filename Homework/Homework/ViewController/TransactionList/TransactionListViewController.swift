@@ -131,7 +131,10 @@ extension TransactionListViewController {
 //MARK-
 extension TransactionListViewController {
     private func presentInsertTransactionViewController() {
-        let vc = InsertTransactionViewController()
+        let vc = InsertTransactionViewControllerProvider.viewController
+        vc.completion = { [weak self] list in
+            self?.datasource.accept(list)
+        }
         present(vc, animated: true)
     }
 }

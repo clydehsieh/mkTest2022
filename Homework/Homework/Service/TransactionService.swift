@@ -11,6 +11,7 @@ import RxSwift
 
 enum TransactionApi {
     case getTransaction
+    case uploadTransaction(request: CreateModifyRequest)
 }
 
 extension TransactionApi: URLRequestConvertible {
@@ -29,6 +30,10 @@ extension TransactionApi: URLRequestConvertible {
         urlRequest.setValue(ContentType.json.rawValue,
                             forHTTPHeaderField: HttpHeaderField.contentType.rawValue)
         
+        if let body = bodyParam {
+            urlRequest.httpBody = body
+        }
+        
         //Encoding
         let encoding: ParameterEncoding = {
             switch method {
@@ -44,20 +49,34 @@ extension TransactionApi: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .getTransaction:
+        case .getTransaction, .uploadTransaction:
             return "transaction"
         }
     }
     
-    private var method: HTTPMethod {
+    var method: HTTPMethod {
         switch self {
         case .getTransaction:
             return .get
+        case .uploadTransaction:
+            return .post
         }
     }
     
     private var parameters: Parameters? {
         switch self {
+        case .uploadTransaction(let request):
+//            return ["time": request.time, "title": request.title, "description": request.description]
+            return nil
+        default:
+            return nil
+        }
+    }
+    
+    private var bodyParam: Data? {
+        switch self {
+        case .uploadTransaction(let request):
+            return try? JSONEncoder().encode(request)
         default:
             return nil
         }

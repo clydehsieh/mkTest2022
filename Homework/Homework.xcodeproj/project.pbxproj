@@ -38,6 +38,10 @@
 		EC9FF16928373FCF002452A0 /* TransactionListViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF16828373FCF002452A0 /* TransactionListViewModelType.swift */; };
 		EC9FF16B28374025002452A0 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF16A28374025002452A0 /* TransactionListViewModel.swift */; };
 		EC9FF16E283741CE002452A0 /* TransactionListViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF16D283741CE002452A0 /* TransactionListViewControllerProvider.swift */; };
+		EC9FF1702837477D002452A0 /* InsertTransactionViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF16F2837477D002452A0 /* InsertTransactionViewModelType.swift */; };
+		EC9FF17428374794002452A0 /* InsertTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17328374794002452A0 /* InsertTransactionViewModel.swift */; };
+		EC9FF17628374AC8002452A0 /* CreateModifyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17528374AC8002452A0 /* CreateModifyRequest.swift */; };
+		EC9FF17828374C2D002452A0 /* InsertTransactionViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17728374C2D002452A0 /* InsertTransactionViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +92,10 @@
 		EC9FF16828373FCF002452A0 /* TransactionListViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModelType.swift; sourceTree = "<group>"; };
 		EC9FF16A28374025002452A0 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		EC9FF16D283741CE002452A0 /* TransactionListViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewControllerProvider.swift; sourceTree = "<group>"; };
+		EC9FF16F2837477D002452A0 /* InsertTransactionViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewModelType.swift; sourceTree = "<group>"; };
+		EC9FF17328374794002452A0 /* InsertTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewModel.swift; sourceTree = "<group>"; };
+		EC9FF17528374AC8002452A0 /* CreateModifyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateModifyRequest.swift; sourceTree = "<group>"; };
+		EC9FF17728374C2D002452A0 /* InsertTransactionViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewControllerProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +243,7 @@
 		0DE77AA72644FDBD0068A3CE /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				EC9FF17528374AC8002452A0 /* CreateModifyRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -272,7 +281,6 @@
 			children = (
 				EC9FF15228368966002452A0 /* NoteItem.swift */,
 				EC9FF1542836898B002452A0 /* NoteItemDetail.swift */,
-				EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */,
 			);
 			path = NoteItemType;
 			sourceTree = "<group>";
@@ -288,8 +296,9 @@
 		EC9FF16728373FB3002452A0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EC9FF16828373FCF002452A0 /* TransactionListViewModelType.swift */,
-				EC9FF16A28374025002452A0 /* TransactionListViewModel.swift */,
+				EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */,
+				EC9FF17128374787002452A0 /* TransactionListViewModelType */,
+				EC9FF1722837478E002452A0 /* InsertTransactionViewModelType */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,8 +307,27 @@
 			isa = PBXGroup;
 			children = (
 				EC9FF16D283741CE002452A0 /* TransactionListViewControllerProvider.swift */,
+				EC9FF17728374C2D002452A0 /* InsertTransactionViewControllerProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		EC9FF17128374787002452A0 /* TransactionListViewModelType */ = {
+			isa = PBXGroup;
+			children = (
+				EC9FF16828373FCF002452A0 /* TransactionListViewModelType.swift */,
+				EC9FF16A28374025002452A0 /* TransactionListViewModel.swift */,
+			);
+			path = TransactionListViewModelType;
+			sourceTree = "<group>";
+		};
+		EC9FF1722837478E002452A0 /* InsertTransactionViewModelType */ = {
+			isa = PBXGroup;
+			children = (
+				EC9FF16F2837477D002452A0 /* InsertTransactionViewModelType.swift */,
+				EC9FF17328374794002452A0 /* InsertTransactionViewModel.swift */,
+			);
+			path = InsertTransactionViewModelType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,12 +477,15 @@
 			files = (
 				EC9FF16E283741CE002452A0 /* TransactionListViewControllerProvider.swift in Sources */,
 				EC9FF15928369A3F002452A0 /* NoteItemDetailTableViewCell.swift in Sources */,
+				EC9FF17828374C2D002452A0 /* InsertTransactionViewControllerProvider.swift in Sources */,
 				0D86F3342643A80F00C0F731 /* APIManager.swift in Sources */,
 				EC9FF16928373FCF002452A0 /* TransactionListViewModelType.swift in Sources */,
 				0D86F2EF2643A18700C0F731 /* TransactionListViewController.swift in Sources */,
+				EC9FF17628374AC8002452A0 /* CreateModifyRequest.swift in Sources */,
 				EC9FF151283687F0002452A0 /* Array+Extension.swift in Sources */,
 				EC9FF145283657A6002452A0 /* NoteItemTableViewCell.swift in Sources */,
 				EC9FF1642836B9A1002452A0 /* TransationListResponse.swift in Sources */,
+				EC9FF1702837477D002452A0 /* InsertTransactionViewModelType.swift in Sources */,
 				EC9FF15E2836B654002452A0 /* TransactionService.swift in Sources */,
 				EC9FF1572836998E002452A0 /* InfoTextView.swift in Sources */,
 				EC9FF148283657C7002452A0 /* TableView+Extension.swift in Sources */,
@@ -462,6 +493,7 @@
 				EC9FF15328368966002452A0 /* NoteItem.swift in Sources */,
 				EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */,
 				EC9FF16B28374025002452A0 /* TransactionListViewModel.swift in Sources */,
+				EC9FF17428374794002452A0 /* InsertTransactionViewModel.swift in Sources */,
 				EC9FF15B28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift in Sources */,
 				0D86F2EB2643A18700C0F731 /* AppDelegate.swift in Sources */,
 				0D86F2ED2643A18700C0F731 /* SceneDelegate.swift in Sources */,

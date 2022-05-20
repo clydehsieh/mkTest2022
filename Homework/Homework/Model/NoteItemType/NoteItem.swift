@@ -7,12 +7,12 @@
 
 import UIKit
 
-struct NoteItem: Decodable {
+struct NoteItem: Codable {
+    var id: Int
     var time: Date
     var title: String
     var description: String
     var details: [NoteItemDetail]?
-    
 }
 
 extension NoteItem {
@@ -29,7 +29,8 @@ extension NoteItem {
             infos.append(NoteItemDetail.mock())
         }
         
-        return NoteItem.init(time: Date(),
+        return NoteItem.init(id: (1...65530).randomElement()!,
+                             time: Date(),
                              title: self.titleArray().randomElement()!,
                              description: self.desArray().randomElement()!,
                              details: infos )

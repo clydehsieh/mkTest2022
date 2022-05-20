@@ -47,17 +47,32 @@ class InsertTransactionViewController: UIViewController {
         return btn
     }()
     
+    //MARK: - DI
+    let viewModel: InsertTransactionViewModel
+    var completion: (([NoteItem])->Void)?
+    
     //MARK: - param
     var disposbag = DisposeBag()
     var datasource = BehaviorRelay<[NoteItemDetailTableViewCellViewModel]>(value: [])
     
     //MARK: - lifecycle
+    
+    init(viewModel: InsertTransactionViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         constructViewHierarchy()
         activateConstraints()
         configureTableView()
+        setupUI()
         setupBinding()
     }
     
@@ -112,18 +127,34 @@ extension InsertTransactionViewController {
         tableView.dataSource = self
     }
     
+    private func setupUI() {
+        timeInfoTextView.contentTextFeild.text = viewModel.time.value.yymmdd
+        titleInfoTextView.contentTextFeild.text = viewModel.title.value
+        descInfoTextView.contentTextFeild.text = viewModel.description.value
+    }
+    
     private func setupBinding() {
         addDetailButton
             .rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.insertEmptyModel()
+                self?.viewModel.insertNewDetail()
             })
             .disposed(by: disposbag)
         
         addNoteButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true)
+                self?.viewModel.uploadCreation()
             })
+            .disposed(by: disposbag)
+        
+        titleInfoTextView.contentTextFeild.rx.text
+            .map({ $0 ?? "" })
+            .bind(to: viewModel.title)
+            .disposed(by: disposbag)
+        
+        descInfoTextView.contentTextFeild.rx.text
+            .map({ $0 ?? "" })
+            .bind(to: viewModel.description)
             .disposed(by: disposbag)
         
         datasource
@@ -131,14 +162,26 @@ extension InsertTransactionViewController {
                 self?.tableView.reloadData()
             })
             .disposed(by: disposbag)
-    }
-}
-
-extension InsertTransactionViewController {
-    private func insertEmptyModel() {
-        var current = datasource.value
-        current.insert(NoteItemDetailTableViewCellViewModel(), at: 0)
-        datasource.accept(current)
+        
+        viewModel.finishedUploadEvent
+            .subscribe { [weak self] list in
+                guard let self = self else { return }
+                debugPrint("add success \(list.count)")
+                self.dismiss(animated: true) {
+                    self.completion?(list)
+                }
+            } onError: { error in
+                debugPrint("error \(error.localizedDescription)")
+            }
+            .disposed(by: disposbag)
+        
+        viewModel.details
+            .subscribe { [weak self] detailList in
+                self?.datasource.accept(detailList)
+            } onError: { error in
+                debugPrint("error \(error.localizedDescription)")
+            }
+            .disposed(by: disposbag)
     }
 }
 

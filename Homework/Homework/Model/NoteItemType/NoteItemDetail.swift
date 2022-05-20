@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct NoteItemDetail: Decodable {
+struct NoteItemDetail: Codable {
     var name: String
     var price: Int
     var quantity: Int

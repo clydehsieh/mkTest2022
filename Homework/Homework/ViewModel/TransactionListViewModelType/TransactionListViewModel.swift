@@ -19,6 +19,8 @@ final class TransactionListViewModel: TransactionListViewModelType {
     
     //MARK: - DI
     let apiManager: APIManager
+    
+    //MARK: - param
     var disposbag = DisposeBag()
     
     init(apiManager: APIManager) {

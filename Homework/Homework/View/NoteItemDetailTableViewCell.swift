@@ -58,6 +58,11 @@ class NoteItemDetailTableViewCell: UITableViewCell {
         viewHierarchyNotReady = false
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     func configure(viewModel: NoteItemDetailTableViewCellViewModel) {
         nameInfoTextView.contentTextFeild.text = viewModel.name.value
         priceInfoTextView.contentTextFeild.text = viewModel.price.value > 0 ?  "\(viewModel.price.value)" : ""
@@ -71,6 +76,7 @@ class NoteItemDetailTableViewCell: UITableViewCell {
         priceInfoTextView.contentTextFeild.rx.text
             .orEmpty
             .compactMap({ Int($0) })
+            .filter({ $0 >= 0})
             .bind(to: viewModel.price)
             .disposed(by: disposeBag)
         
