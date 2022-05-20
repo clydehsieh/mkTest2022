@@ -103,7 +103,6 @@ extension NoteItemDetailTableViewCell {
         
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-        
         }
     }
 }

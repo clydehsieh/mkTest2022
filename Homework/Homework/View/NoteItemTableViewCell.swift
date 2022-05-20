@@ -60,7 +60,7 @@ extension NoteItemTableViewCell {
         detailStackView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(15)
-            make.bottom.equalToSuperview().inset(5)
+            make.bottom.equalToSuperview().inset(5).priority(999)
             make.right.lessThanOrEqualToSuperview()
         }
     }

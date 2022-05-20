@@ -65,9 +65,6 @@ extension TransactionApi: URLRequestConvertible {
     
     private var parameters: Parameters? {
         switch self {
-        case .uploadTransaction(let request):
-//            return ["time": request.time, "title": request.title, "description": request.description]
-            return nil
         default:
             return nil
         }

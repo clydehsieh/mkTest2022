@@ -302,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				EC9FF15A28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift */,
-				EC9FF17128374787002452A0 /* TransactionListViewModelType */,
 				EC9FF1722837478E002452A0 /* InsertTransactionViewModelType */,
+				EC9FF17128374787002452A0 /* TransactionListViewModelType */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

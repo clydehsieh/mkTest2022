@@ -132,6 +132,7 @@ extension TransactionListViewController {
     private func presentInsertTransactionViewController() {
         let vc = InsertTransactionViewControllerProvider.viewController
         vc.completion = { [weak self] list in
+            debugPrint("success upload and reload \(list.count)")
             self?.datasource.accept(list)
         }
         present(vc, animated: true)
