@@ -8,7 +8,7 @@
 import UIKit
 
 struct CreateModifyRequest: Codable {
-    var time: TimeInterval
+    var time: Int
     var title: String
     var description: String
     var details: [NoteItemDetail]?

@@ -55,7 +55,7 @@ extension InsertTransactionViewModel {
         
         let details = details.value.map({ $0.mappingNoteItemDetailData() })
         
-        return CreateModifyRequest(time: time.value.timeIntervalSince1970,
+        return CreateModifyRequest(time: Int(time.value.timeIntervalSince1970),
                             title: title.value,
                             description: description.value,
                                    details: details.count > 0 ? details : nil)
