@@ -43,8 +43,37 @@ extension TransactionListViewModel {
                     return
                 }
                 
+                debugPrint("fetch items \(list.count) from server")
                 weakSelf?.reloadListevent.accept(list)
-                debugPrint("reload item \(list.count)")
+                weakSelf?.saveToLocalDB(items: list)
+            }, onError: { error in
+                weakSelf?.errorEvent.accept(error)
+                debugPrint("\(error.localizedDescription)")
+            })
+            .disposed(by: disposbag)
+    }
+    
+    func saveToLocalDB(items: [NoteItem]) {
+        weak var weakSelf = self
+        
+        DBManager.shared.insert(items: items)
+            .subscribe(onNext: {
+                debugPrint("save to local success")
+                weakSelf?.loadFromLocalDB()
+            }, onError: { error in
+                weakSelf?.errorEvent.accept(error)
+                weakSelf?.loadFromLocalDB()
+                debugPrint("save to local fail \(error.localizedDescription)")
+            })
+            .disposed(by: disposbag)
+    }
+    
+    func loadFromLocalDB() {
+        weak var weakSelf = self
+        DBManager.shared.loadItems()
+            .subscribe(onNext: { list in
+//                weakSelf?.reloadListevent.accept(list)
+                debugPrint("reload item \(list.count) from local")
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
                 debugPrint("\(error.localizedDescription)")

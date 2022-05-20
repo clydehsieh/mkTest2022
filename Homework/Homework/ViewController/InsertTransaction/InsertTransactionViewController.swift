@@ -78,8 +78,6 @@ class InsertTransactionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
     }
 }
 
@@ -134,6 +132,7 @@ extension InsertTransactionViewController {
     }
     
     private func setupBinding() {
+        // tell viewModel to insert new detail
         addDetailButton
             .rx.tap
             .subscribe(onNext: { [weak self] in
@@ -141,28 +140,33 @@ extension InsertTransactionViewController {
             })
             .disposed(by: disposbag)
         
+        // start to upload
         addNoteButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.uploadCreation()
             })
             .disposed(by: disposbag)
         
+        // bind textField with viewModel
         titleInfoTextView.contentTextFeild.rx.text
             .map({ $0 ?? "" })
             .bind(to: viewModel.title)
             .disposed(by: disposbag)
         
+        // bind textField with viewModel
         descInfoTextView.contentTextFeild.rx.text
             .map({ $0 ?? "" })
             .bind(to: viewModel.description)
             .disposed(by: disposbag)
         
+        // update tableview
         datasource
             .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
             })
             .disposed(by: disposbag)
         
+        //
         viewModel.finishedUploadEvent
             .subscribe { [weak self] list in
                 guard let self = self else { return }
@@ -175,6 +179,7 @@ extension InsertTransactionViewController {
             }
             .disposed(by: disposbag)
         
+        // did insert new detail
         viewModel.details
             .subscribe { [weak self] detailList in
                 self?.datasource.accept(detailList)

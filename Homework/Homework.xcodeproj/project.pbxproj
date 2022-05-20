@@ -42,6 +42,8 @@
 		EC9FF17428374794002452A0 /* InsertTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17328374794002452A0 /* InsertTransactionViewModel.swift */; };
 		EC9FF17628374AC8002452A0 /* CreateModifyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17528374AC8002452A0 /* CreateModifyRequest.swift */; };
 		EC9FF17828374C2D002452A0 /* InsertTransactionViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17728374C2D002452A0 /* InsertTransactionViewControllerProvider.swift */; };
+		EC9FF17B283787E8002452A0 /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = EC9FF17A283787E8002452A0 /* FMDB */; };
+		EC9FF17D28378981002452A0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF17C28378981002452A0 /* DBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		EC9FF17328374794002452A0 /* InsertTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewModel.swift; sourceTree = "<group>"; };
 		EC9FF17528374AC8002452A0 /* CreateModifyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateModifyRequest.swift; sourceTree = "<group>"; };
 		EC9FF17728374C2D002452A0 /* InsertTransactionViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewControllerProvider.swift; sourceTree = "<group>"; };
+		EC9FF17C28378981002452A0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D6E57DF2643AEDB00E3E72C /* RxRelay in Frameworks */,
+				EC9FF17B283787E8002452A0 /* FMDB in Frameworks */,
 				0D6E57D32643AE8F00E3E72C /* Alamofire in Frameworks */,
 				0D6E57E32643AEDB00E3E72C /* RxCocoa in Frameworks */,
 				0D6E57E12643AEDB00E3E72C /* RxSwift in Frameworks */,
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				0D86F3332643A80F00C0F731 /* APIManager.swift */,
+				EC9FF17C28378981002452A0 /* DBManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 				0D6E57DE2643AEDB00E3E72C /* RxRelay */,
 				0D6E57E02643AEDB00E3E72C /* RxSwift */,
 				0D6E57E22643AEDB00E3E72C /* RxCocoa */,
+				EC9FF17A283787E8002452A0 /* FMDB */,
 			);
 			productName = Homework;
 			productReference = 0D86F2E72643A18700C0F731 /* Homework.app */;
@@ -432,6 +438,7 @@
 				0D6E57D12643AE8F00E3E72C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0D6E57D72643AEAB00E3E72C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0D6E57DD2643AEDB00E3E72C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				EC9FF179283787E8002452A0 /* XCRemoteSwiftPackageReference "fmdb" */,
 			);
 			productRefGroup = 0D86F2E82643A18700C0F731 /* Products */;
 			projectDirPath = "";
@@ -494,6 +501,7 @@
 				EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */,
 				EC9FF16B28374025002452A0 /* TransactionListViewModel.swift in Sources */,
 				EC9FF17428374794002452A0 /* InsertTransactionViewModel.swift in Sources */,
+				EC9FF17D28378981002452A0 /* DBManager.swift in Sources */,
 				EC9FF15B28369B8F002452A0 /* NoteItemDetailTableViewCellViewModel.swift in Sources */,
 				0D86F2EB2643A18700C0F731 /* AppDelegate.swift in Sources */,
 				0D86F2ED2643A18700C0F731 /* SceneDelegate.swift in Sources */,
@@ -843,6 +851,14 @@
 				version = 6.1.0;
 			};
 		};
+		EC9FF179283787E8002452A0 /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -880,6 +896,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D6E57DD2643AEDB00E3E72C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		EC9FF17A283787E8002452A0 /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC9FF179283787E8002452A0 /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

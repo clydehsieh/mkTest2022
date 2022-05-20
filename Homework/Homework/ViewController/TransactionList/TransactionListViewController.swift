@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class TransactionListViewController: UIViewController {
-   //MARK: views
+    //MARK: views
     private let sumCostLabel: UILabel = {
         let lb = UILabel()
         lb.textColor = .black
@@ -64,7 +64,6 @@ class TransactionListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         viewModel.fetchList()
     }
 }
@@ -108,7 +107,7 @@ extension TransactionListViewController {
     
     private func setupBinding() {
         datasource
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: { [weak self] itemList in
                 self?.tableView.reloadData()
             })
             .disposed(by: disposbag)

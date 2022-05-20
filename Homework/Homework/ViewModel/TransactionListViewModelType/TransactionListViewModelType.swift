@@ -11,6 +11,7 @@ import RxRelay
 protocol TransactionListViewModelType {
     // input
     func fetchList()
+    func loadFromLocalDB()
     
     //output
     var reloadListevent: PublishRelay<[NoteItem]> { get }
