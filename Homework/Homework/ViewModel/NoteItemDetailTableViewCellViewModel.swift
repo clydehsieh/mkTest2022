@@ -20,7 +20,11 @@ struct NoteItemDetailTableViewCellViewModel {
 }
 
 extension NoteItemDetailTableViewCellViewModel {
-    func mappingNoteItemDetailData() -> NoteItemDetail {
-        NoteItemDetail.init(name: name.value, price: price.value, quantity: quantity.value)
+    func mappingNoteItemDetailData() -> NoteItemDetail? {
+        guard price.value > 0, quantity.value > 0, name.value.count > 0 else {
+            return nil
+        }
+        
+        return NoteItemDetail.init(name: name.value, price: price.value, quantity: quantity.value)
     }
 }

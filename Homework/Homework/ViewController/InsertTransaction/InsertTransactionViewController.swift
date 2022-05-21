@@ -170,7 +170,6 @@ extension InsertTransactionViewController {
         viewModel.finishedUploadEvent
             .subscribe { [weak self] list in
                 guard let self = self else { return }
-                debugPrint("add success \(list.count)")
                 self.dismiss(animated: true) {
                     self.completion?(list)
                 }

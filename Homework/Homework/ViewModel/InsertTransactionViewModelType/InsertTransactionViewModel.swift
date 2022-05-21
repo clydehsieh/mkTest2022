@@ -53,7 +53,7 @@ extension InsertTransactionViewModel {
 extension InsertTransactionViewModel {
     func createUploadRequest() -> CreateModifyRequest {
         
-        let details = details.value.map({ $0.mappingNoteItemDetailData() })
+        let details = details.value.compactMap({ $0.mappingNoteItemDetailData() })
         
         return CreateModifyRequest(time: Int(time.value.timeIntervalSince1970),
                             title: title.value,

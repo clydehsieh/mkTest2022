@@ -110,7 +110,7 @@ extension NoteItemDetailTableViewCell {
         
         stackView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(bottomLine.snp.top).inset(5)
+            make.bottom.equalTo(bottomLine.snp.top)
         }
         
         bottomLine.snp.makeConstraints { make in
