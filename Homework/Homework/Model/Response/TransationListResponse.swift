@@ -15,12 +15,3 @@ struct TransationListResponse: Decodable {
         self.list = try container.decode([NoteItem].self)
     }
 }
-
-struct BasicResponse<T: Decodable>: Decodable {
-    var list: [NoteItem]?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self.list = try container.decode([NoteItem].self)
-    }
-}

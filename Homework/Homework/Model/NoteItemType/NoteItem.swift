@@ -15,11 +15,15 @@ struct NoteItem: Codable {
     var details: [NoteItemDetail]?
 }
 
+//MARK: - view display
 extension NoteItem {
     var displayDescription: String {
         "\(time.yymmdd) \(title) \(description)"
     }
-    
+}
+
+//MARK: - mock data
+extension NoteItem {
     static func mock() -> NoteItem {
         
         let count = (1...5).randomElement()!

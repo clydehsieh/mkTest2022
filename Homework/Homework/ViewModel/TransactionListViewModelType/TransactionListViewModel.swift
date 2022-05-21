@@ -55,7 +55,7 @@ extension TransactionListViewModel {
                     return
                 }
                 
-                debugPrint("fetch items \(list.count) from server")
+                debugPrint("fetch \(list.count) items from server")
                 weakSelf?.saveToLocalDB(items: list)
                 weakSelf?.sumAndUpdateTotalCost(of: list)
             }, onError: { error in
@@ -70,12 +70,12 @@ extension TransactionListViewModel {
         weak var weakSelf = self
         DBManager.shared.insert(items: items)
             .subscribe(onNext: {
-                debugPrint("save to local success")
+                debugPrint("did sync server data with to local db")
                 weakSelf?.loadFromLocalDB()
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
                 weakSelf?.loadFromLocalDB()
-                debugPrint("save to local fail \(error.localizedDescription)")
+                debugPrint("fail to sync server data with to local db \(error.localizedDescription)")
             })
             .disposed(by: disposbag)
     }
@@ -85,10 +85,10 @@ extension TransactionListViewModel {
         DBManager.shared.loadItems()
             .subscribe(onNext: { list in
                 weakSelf?.reloadListevent.accept(list)
-                debugPrint("reload item \(list.count) from local")
+                debugPrint("fetch \(list.count) items from local db")
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
-                debugPrint("\(error.localizedDescription)")
+                debugPrint("fail to fetch data from local db: \(error.localizedDescription)")
             })
             .disposed(by: disposbag)
     }

@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 import RxSwift
 
-//The header fields
 enum HttpHeaderField: String {
     case authentication = "Authorization"
     case contentType = "Content-Type"
@@ -17,7 +16,6 @@ enum HttpHeaderField: String {
     case acceptEncoding = "Accept-Encoding"
 }
 
-//The content type (JSON)
 enum ContentType: String {
     case json = "application/json"
 }
@@ -39,32 +37,30 @@ class APIManager {
                     observer.onError(error)
                 }
             }
-
-            //Finally, we return a disposable to stop the request
+            
             return Disposables.create {
                 request.cancel()
             }
         }
     }
-    
-    private func request2<T: Decodable> (_ urlConvertible: URLRequestConvertible) -> Observable<T> {
-        return Observable<T>.create { observer in
-            let request = AF.request(urlConvertible).responseDecodable { (response: DataResponse<T, AFError>) in
-                switch response.result {
-                case .success(let value):
-                    observer.onNext(value)
-                    observer.onCompleted()
-                case .failure(let error):
-                    observer.onError(error)
-                }
-            }
-
-            //Finally, we return a disposable to stop the request
-            return Disposables.create {
-                request.cancel()
-            }
-        }
-    }
+//    
+//    private func request2<T: Decodable> (_ urlConvertible: URLRequestConvertible) -> Observable<T> {
+//        return Observable<T>.create { observer in
+//            let request = AF.request(urlConvertible).responseDecodable { (response: DataResponse<T, AFError>) in
+//                switch response.result {
+//                case .success(let value):
+//                    observer.onNext(value)
+//                    observer.onCompleted()
+//                case .failure(let error):
+//                    observer.onError(error)
+//                }
+//            }
+//
+//            return Disposables.create {
+//                request.cancel()
+//            }
+//        }
+//    }
 }
 
 

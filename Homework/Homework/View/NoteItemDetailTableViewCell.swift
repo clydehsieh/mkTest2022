@@ -24,6 +24,12 @@ class NoteItemDetailTableViewCell: UITableViewCell {
         return v
     }()
     
+    let bottomLine: UIView = {
+        let v = UIView()
+        v.backgroundColor = .lightGray
+        return v
+    }()
+    
     lazy var stackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [nameInfoTextView, quantityInfoTextView, priceInfoTextView])
         sv.axis = .vertical
@@ -92,6 +98,7 @@ class NoteItemDetailTableViewCell: UITableViewCell {
 extension NoteItemDetailTableViewCell {
     private func constructViewHierarchy() {
         contentView.addSubview(stackView)
+        contentView.addSubview(bottomLine)
     }
     
     private func activateConstraints() {
@@ -102,7 +109,14 @@ extension NoteItemDetailTableViewCell {
         }
         
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(bottomLine.snp.top).inset(5)
+        }
+        
+        bottomLine.snp.makeConstraints { make in
+            make.height.equalTo(2)
+            make.right.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(5)
         }
     }
 }
