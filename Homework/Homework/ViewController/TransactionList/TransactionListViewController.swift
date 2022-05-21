@@ -17,7 +17,7 @@ class TransactionListViewController: UIViewController {
         let lb = UILabel()
         lb.textColor = .black
         lb.font = .systemFont(ofSize: 14, weight: .bold)
-        lb.text = "總花費 $0"
+        lb.text = "Loading..."
         return lb
     }()
     
@@ -30,7 +30,11 @@ class TransactionListViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("+", for: .normal)
         btn.setTitleColor(.red, for: .normal)
+        btn.layer.cornerRadius = 25
+        btn.layer.borderColor = UIColor.red.cgColor
+        btn.layer.borderWidth = 1
         btn.titleLabel?.font = .systemFont(ofSize: 30, weight: .bold)
+        btn.isHidden = true
         return btn
     }()
     
@@ -108,6 +112,7 @@ extension TransactionListViewController {
     private func setupBinding() {
         datasource
             .subscribe(onNext: { [weak self] itemList in
+                self?.addNoteButton.isHidden = false
                 self?.tableView.reloadData()
             })
             .disposed(by: disposbag)

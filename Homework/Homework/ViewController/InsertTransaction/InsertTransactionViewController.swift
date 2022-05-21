@@ -74,6 +74,7 @@ class InsertTransactionViewController: UIViewController {
         configureTableView()
         setupUI()
         setupBinding()
+        addTapToDismissKeyboardGesture()
     }
     
     override func viewDidAppear(_ animated: Bool) {

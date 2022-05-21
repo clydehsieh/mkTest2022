@@ -26,6 +26,7 @@
 		EC2B2825283803A800FE203E /* ToString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2B2824283803A800FE203E /* ToString+Extension.swift */; };
 		EC8C3F712838C3570033A9E2 /* TransactionListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3F702838C3570033A9E2 /* TransactionListViewControllerTest.swift */; };
 		EC8C3F732838C3890033A9E2 /* InsertTransactionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3F722838C3890033A9E2 /* InsertTransactionViewControllerTest.swift */; };
+		EC8C3F772838E4520033A9E2 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3F762838E4520033A9E2 /* ViewController+Extension.swift */; };
 		EC9FF145283657A6002452A0 /* NoteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF144283657A6002452A0 /* NoteItemTableViewCell.swift */; };
 		EC9FF148283657C7002452A0 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF147283657C7002452A0 /* TableView+Extension.swift */; };
 		EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FF14E283659D3002452A0 /* Date+Extension.swift */; };
@@ -85,6 +86,7 @@
 		EC2B2824283803A800FE203E /* ToString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToString+Extension.swift"; sourceTree = "<group>"; };
 		EC8C3F702838C3570033A9E2 /* TransactionListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewControllerTest.swift; sourceTree = "<group>"; };
 		EC8C3F722838C3890033A9E2 /* InsertTransactionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTransactionViewControllerTest.swift; sourceTree = "<group>"; };
+		EC8C3F762838E4520033A9E2 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		EC9FF144283657A6002452A0 /* NoteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemTableViewCell.swift; sourceTree = "<group>"; };
 		EC9FF147283657C7002452A0 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
 		EC9FF14E283659D3002452A0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				EC9FF14E283659D3002452A0 /* Date+Extension.swift */,
 				EC9FF150283687F0002452A0 /* Array+Extension.swift */,
 				EC2B2824283803A800FE203E /* ToString+Extension.swift */,
+				EC8C3F762838E4520033A9E2 /* ViewController+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				EC9FF1552836898B002452A0 /* NoteItemDetail.swift in Sources */,
 				EC9FF15328368966002452A0 /* NoteItem.swift in Sources */,
 				EC9FF14F283659D3002452A0 /* Date+Extension.swift in Sources */,
+				EC8C3F772838E4520033A9E2 /* ViewController+Extension.swift in Sources */,
 				EC9FF16B28374025002452A0 /* TransactionListViewModel.swift in Sources */,
 				EC9FF17428374794002452A0 /* InsertTransactionViewModel.swift in Sources */,
 				EC9FF17D28378981002452A0 /* DBManager.swift in Sources */,

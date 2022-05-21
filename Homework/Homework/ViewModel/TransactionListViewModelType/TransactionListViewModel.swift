@@ -20,18 +20,14 @@ final class TransactionListViewModel: TransactionListViewModelType {
     
     //MARK: - DI
     let apiManager: APIManager
+    let dbManager: DBManager
     
     //MARK: - param
     var disposbag = DisposeBag()
     
-    init(apiManager: APIManager) {
+    init(apiManager: APIManager, dbManager: DBManager) {
         self.apiManager = apiManager
-        
-        setupBinding()
-    }
-    
-    private func setupBinding() {
-   
+        self.dbManager = dbManager
     }
     
     private func sumAndUpdateTotalCost(of lists: [NoteItem]) {
@@ -66,7 +62,7 @@ extension TransactionListViewModel {
     
     func saveToLocalDB(items: [NoteItem]) {
         weak var weakSelf = self
-        DBManager.shared.insert(items: items)
+        dbManager.insert(items: items)
             .subscribe(onNext: {
                 debugPrint("did sync server data with to local db")
                 weakSelf?.loadFromLocalDB()
@@ -80,7 +76,7 @@ extension TransactionListViewModel {
     
     func loadFromLocalDB() {
         weak var weakSelf = self
-        DBManager.shared.loadItems()
+        dbManager.loadItems()
             .subscribe(onNext: { list in
                 weakSelf?.reloadListevent.accept(list)
                 weakSelf?.sumAndUpdateTotalCost(of: list)

@@ -22,12 +22,14 @@ class InsertTransactionViewModel: InsertTransactionViewModelType {
     
     //MARK: - DI
     let apiManager: APIManager
+    let dbManager: DBManager
     
     //MARK: - param
     var disposbag = DisposeBag()
     
-    init(apiManager: APIManager) {
+    init(apiManager: APIManager, dbManager: DBManager) {
         self.apiManager = apiManager
+        self.dbManager = dbManager
     }
 }
 
@@ -51,7 +53,7 @@ extension InsertTransactionViewModel {
     
     func saveToLocal() {
         weak var weakSelf = self
-        DBManager.shared.insert(items: [createItem()])
+        dbManager.insert(items: [createItem()])
             .subscribe(onNext: {
                 weakSelf?.finishedInsertToLocalDbEvent.accept(())
                 debugPrint("did sync server data with to local db")

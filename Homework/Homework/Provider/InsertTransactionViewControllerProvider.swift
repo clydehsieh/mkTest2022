@@ -13,8 +13,12 @@ struct InsertTransactionViewControllerProvider {
         APIManager.shared
     }
     
+    static var dbManager: DBManager {
+        DBManager.shared
+    }
+    
     static var viewModel: InsertTransactionViewModel {
-        InsertTransactionViewModel(apiManager: self.apiManager)
+        InsertTransactionViewModel(apiManager: self.apiManager, dbManager: self.dbManager)
     }
     
     static var viewController: InsertTransactionViewController {

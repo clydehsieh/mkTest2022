@@ -13,8 +13,12 @@ struct TransactionListViewControllerProvider {
         APIManager.shared
     }
     
+    static var dbManager: DBManager {
+        DBManager.shared
+    }
+    
     static var viewModel: TransactionListViewModel {
-        TransactionListViewModel(apiManager: self.apiManager)
+        TransactionListViewModel(apiManager: self.apiManager, dbManager: self.dbManager)
     }
     
     static var viewController: TransactionListViewController {
