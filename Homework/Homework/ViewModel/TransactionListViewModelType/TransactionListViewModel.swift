@@ -10,22 +10,19 @@ import RxRelay
 import RxSwift
 
 final class TransactionListViewModel: TransactionListViewModelType {
-    // input
-    var fetchListEvent = PublishRelay<Void>()
-    
     //output
     var reloadListevent = PublishRelay<[NoteItem]>()
     var errorEvent = PublishRelay<Error>()
     var reloadTotalCost = PublishRelay<Int>()
     
     //MARK: - DI
-    let apiManager: APIManager
-    let dbManager: DBManager
+    let apiManager: APIManagerType
+    let dbManager: DBManagerType
     
     //MARK: - param
     var disposbag = DisposeBag()
     
-    init(apiManager: APIManager, dbManager: DBManager) {
+    init(apiManager: APIManagerType, dbManager: DBManagerType) {
         self.apiManager = apiManager
         self.dbManager = dbManager
     }

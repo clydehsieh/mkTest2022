@@ -9,11 +9,11 @@ import UIKit
 
 struct InsertTransactionViewControllerProvider {
 
-    static var apiManager: APIManager {
+    static var apiManager: APIManagerType {
         APIManager.shared
     }
     
-    static var dbManager: DBManager {
+    static var dbManager: DBManagerType {
         DBManager.shared
     }
     

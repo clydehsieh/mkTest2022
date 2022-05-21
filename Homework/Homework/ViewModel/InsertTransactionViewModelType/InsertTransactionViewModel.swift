@@ -21,13 +21,13 @@ class InsertTransactionViewModel: InsertTransactionViewModelType {
     var finishedInsertToLocalDbEvent = PublishRelay<Void>()
     
     //MARK: - DI
-    let apiManager: APIManager
-    let dbManager: DBManager
+    let apiManager: APIManagerType
+    let dbManager: DBManagerType
     
     //MARK: - param
     var disposbag = DisposeBag()
     
-    init(apiManager: APIManager, dbManager: DBManager) {
+    init(apiManager: APIManagerType, dbManager: DBManagerType) {
         self.apiManager = apiManager
         self.dbManager = dbManager
     }

@@ -13,7 +13,7 @@ enum DBManagerError: Error {
     case databaseNotExist
 }
 
-class DBManager {
+class DBManager: DBManagerType {
     
     static let shared = DBManager()
     
@@ -148,8 +148,6 @@ extension DBManager {
                     let id = Int(results.int(forColumn: field_id))
                     let timeDouble = results.double(forColumn: field_time)
                     let time = Date.init(timeIntervalSince1970: timeDouble)
-//                    let timeIn = TimeInterval(results.int(forColumn: field_time))
-//                    let time = Date.init(timeIntervalSince1970: timeIn)
                     let title = results.string(forColumn: field_title) ?? ""
                     let description = results.string(forColumn: field_description) ?? ""
                     var details: [NoteItemDetail]? = nil
