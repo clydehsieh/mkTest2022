@@ -27,6 +27,10 @@ class TransactionListViewModelTest: XCTestCase {
         XCTAssertEqual(api.getListRequestCount, 1)
         XCTAssertEqual(db.insertCount, 1)
         XCTAssertEqual(db.insertItemCount, api.responseMock!.list!.count)
+        
+        addTeardownBlock { [weak vm] in
+            XCTAssertNil(vm, "viewcontroller should have been deallocated. Potential memory leak", file: #filePath, line: #line)
+        }
     }
     
     func makeSUT() -> (apiSpy: APIManageSPY, dbMangerSPY: DBManagerSPY, viewModel: TransactionListViewModel) {
