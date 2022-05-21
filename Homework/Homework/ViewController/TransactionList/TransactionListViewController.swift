@@ -141,6 +141,11 @@ extension TransactionListViewController {
             debugPrint("upload success and save/update \(list.count) items to local db")
             self?.viewModel.saveToLocalDB(items: list)
         }
+        
+        vc.reloadHandler = { [weak self]  in
+            debugPrint("upload fail but save item to local db success")
+            self?.viewModel.loadFromLocalDB()
+        }
         present(vc, animated: true)
     }
 }

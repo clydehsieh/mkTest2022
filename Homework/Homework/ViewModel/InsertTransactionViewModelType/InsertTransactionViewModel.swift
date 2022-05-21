@@ -18,6 +18,7 @@ class InsertTransactionViewModel: InsertTransactionViewModelType {
     
     //
     var finishedUploadEvent = PublishRelay<[NoteItem]>()
+    var finishedInsertToLocalDbEvent = PublishRelay<Void>()
     
     //MARK: - DI
     let apiManager: APIManager
@@ -42,8 +43,20 @@ extension InsertTransactionViewModel {
             .subscribe(onNext: { [weak self] respnse in
                 //
                 self?.finishedUploadEvent.accept(respnse.list ?? [])
+            }, onError: { [weak self] error in
+                self?.saveToLocal()
+            })
+            .disposed(by: disposbag)
+    }
+    
+    func saveToLocal() {
+        weak var weakSelf = self
+        DBManager.shared.insert(items: [createItem()])
+            .subscribe(onNext: {
+                weakSelf?.finishedInsertToLocalDbEvent.accept(())
+                debugPrint("did sync server data with to local db")
             }, onError: { error in
-                debugPrint("\(error)")
+                debugPrint("fail to fetch data from local db: \(error.localizedDescription)")
             })
             .disposed(by: disposbag)
     }
@@ -52,12 +65,23 @@ extension InsertTransactionViewModel {
 //MARK: - export
 extension InsertTransactionViewModel {
     func createUploadRequest() -> CreateModifyRequest {
-        
+        // rmeove empty detail
         let details = details.value.compactMap({ $0.mappingNoteItemDetailData() })
         
         return CreateModifyRequest(time: Int(time.value.timeIntervalSince1970),
                             title: title.value,
                             description: description.value,
                                    details: details.count > 0 ? details : nil)
+    }
+    
+    func createItem() -> NoteItem {
+        // rmeove empty detail
+        let details = details.value.compactMap({ $0.mappingNoteItemDetailData() })
+        
+        return NoteItem(id: Int(Date().timeIntervalSince1970),
+                        time: time.value,
+                        title: title.value,
+                        description: description.value,
+                        details: details.count > 0 ? details : nil)
     }
 }

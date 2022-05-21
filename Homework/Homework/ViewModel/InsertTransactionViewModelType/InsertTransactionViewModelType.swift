@@ -20,8 +20,6 @@ protocol InsertTransactionViewModelType {
     func uploadCreation()
     
     // output
-    func createUploadRequest() -> CreateModifyRequest
     var finishedUploadEvent: PublishRelay<[NoteItem]> { get }
-    
-    
+    var finishedInsertToLocalDbEvent: PublishRelay<Void> { get }
 }

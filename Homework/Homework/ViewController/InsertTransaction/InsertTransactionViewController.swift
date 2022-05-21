@@ -50,7 +50,7 @@ class InsertTransactionViewController: UIViewController {
     //MARK: - DI
     let viewModel: InsertTransactionViewModel
     var completion: (([NoteItem])->Void)?
-    
+    var reloadHandler:(()->Void)?
     //MARK: - param
     var disposbag = DisposeBag()
     var datasource = BehaviorRelay<[NoteItemDetailTableViewCellViewModel]>(value: [])
@@ -172,6 +172,17 @@ extension InsertTransactionViewController {
                 guard let self = self else { return }
                 self.dismiss(animated: true) {
                     self.completion?(list)
+                }
+            } onError: { error in
+                debugPrint("error \(error.localizedDescription)")
+            }
+            .disposed(by: disposbag)
+        
+        viewModel.finishedInsertToLocalDbEvent
+            .subscribe { [weak self] _ in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    self.reloadHandler?()
                 }
             } onError: { error in
                 debugPrint("error \(error.localizedDescription)")
