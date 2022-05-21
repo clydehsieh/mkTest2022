@@ -54,10 +54,8 @@ extension TransactionListViewModel {
                 guard let list = response.list else {
                     return
                 }
-                
                 debugPrint("fetch \(list.count) items from server")
                 weakSelf?.saveToLocalDB(items: list)
-                weakSelf?.sumAndUpdateTotalCost(of: list)
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
                 weakSelf?.loadFromLocalDB()
@@ -85,6 +83,7 @@ extension TransactionListViewModel {
         DBManager.shared.loadItems()
             .subscribe(onNext: { list in
                 weakSelf?.reloadListevent.accept(list)
+                weakSelf?.sumAndUpdateTotalCost(of: list)
                 debugPrint("fetch \(list.count) items from local db")
             }, onError: { error in
                 weakSelf?.errorEvent.accept(error)
